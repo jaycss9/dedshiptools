@@ -138,7 +138,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎵 Song Description Generator</h1>
+            <h1>">">🎵 Song Description Generator</h1>
             <p>Create professional YouTube song descriptions</p>
         </div>
 
@@ -184,87 +184,21 @@
                     <input type="text" id="genres" placeholder="indie, pop, Soul, Alternative">
                 </div>
 
-                <button class="btn" onclick="generateDescription()">Generate Description</button>
+                <button class="btn" id="generateButton">Generate Description</button>
             </div>
 
             <div class="output-section">
                 <h2 class="section-title">Generated Description</h2>
                 <div class="output-box" id="output">Your generated description will appear here...</div>
-                <button class="btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+                <button class="btn" id="copyButton">📋 Copy to Clipboard</button>
             </div>
         </div>
     </div>
 
     <script>
-        function generateDescription() {
-            const artist = document.getElementById('artistName').value || 'Artist Name';
-            const song = document.getElementById('songTitle').value || 'Song Title';
-            const streamLink = document.getElementById('streamLink').value;
-            const socialLinks = document.getElementById('socialLinks').value;
-            const lyrics = document.getElementById('lyrics').value;
-            const hashtags = document.getElementById('hashtags').value;
-            const genres = document.getElementById('genres').value;
-
-            let description = `${artist} - ${song} (Lyrics)\n\n`;
-            description += `Join the journey! Click the bell icon to stay updated!\n\n`;
-
-            if (streamLink) {
-                description += `⏬ Listen/Stream: ${streamLink}\n\n`;
-            }
-
-            if (socialLinks) {
-                description += `✨ Follow ${artist}:\n`;
-                const links = socialLinks.split('\n').filter(link => link.trim());
-                links.forEach(link => {
-                    description += `${link}\n`;
-                });
-                description += `\n`;
-            }
-
-            description += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-            description += `🎤 LYRICS\n`;
-            description += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-            if (lyrics) {
-                description += `${lyrics}\n\n`;
-            }
-
-            description += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-            if (hashtags) {
-                description += `Tags\n${hashtags}\n\n`;
-            }
-
-            description += `📷 Background image credits:\n`;
-            description += `Unsplash: http://unsplash.com\n`;
-            description += `Pexels: http://pexels.com\n\n`;
-
-            if (genres) {
-                description += `⚡${genres}`;
-            }
-
-            document.getElementById('output').textContent = description;
-        }
-
-        function copyToClipboard() {
-            const output = document.getElementById('output').textContent;
-            if (output === 'Your generated description will appear here...') {
-                alert('Please generate a description first!');
-                return;
-            }
-
-            navigator.clipboard.writeText(output).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = '✓ Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            }).catch(err => {
-                alert('Failed to copy. Please copy manually.');
-            });
-        }
-    </script>
-</body>
-
-</html>
+        // Utility function to escape HTML
+        function escapeHTML(unsafe) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',"`extramerate":"":marked;}
